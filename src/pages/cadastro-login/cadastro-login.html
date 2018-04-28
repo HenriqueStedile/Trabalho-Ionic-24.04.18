@@ -1,0 +1,47 @@
+
+<ion-header>
+  <ion-navbar hideBackButton>
+    <ion-buttons start left>
+      <button ion-button (click)="voltarPagina()" style="color:black !important;">
+        <ion-icon ios="ios-arrow-back" md="md-arrow-back"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-title>Cadastro Usuário</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+  <form [formGroup]="cadastroLoginForm" (submit)="criarUsuario()" novalidate>
+    <ion-row padding>
+      <ion-col text-center col-12> Cadastro de Usuário</ion-col>
+
+      <ion-col text-center col-12>
+        <ion-item>
+          <ion-label floating>E-mail</ion-label>
+          <ion-input #email formControlName="email" type="email" [class.invalid]="!cadastroLoginForm.controls.email.valid && cadastroLoginForm.controls.email.dirty"></ion-input>
+        </ion-item>
+        <ion-item class="error-message" *ngIf="!cadastroLoginForm.controls.email.valid  && cadastroLoginForm.controls.email.dirty">
+          <p>Informe um e-mail válido.</p>
+        </ion-item>
+      </ion-col>
+
+      <ion-col text-center col-12>
+        <ion-item>
+          <ion-label floating>Senha</ion-label>
+          <ion-input #password formControlName="password" type="password" [class.invalid]="!cadastroLoginForm.controls.password.valid && cadastroLoginForm.controls.password.dirty"></ion-input>
+        </ion-item>
+        <ion-item class="error-message" *ngIf="!cadastroLoginForm.controls.password.valid  && cadastroLoginForm.controls.password.dirty">
+          <p>A senha deve ter mais de 6 caracteres.</p>
+        </ion-item>
+      </ion-col>
+
+      <ion-col text-center col-12>
+        <button block type="submit" ion-button large>
+          <ion-icon ios="ios-log-in" md="md-log-in" style="font-size:34px;padding-right:10px;"></ion-icon> Salvar </button>
+      </ion-col>
+
+    </ion-row>
+
+  </form>
+</ion-content>
